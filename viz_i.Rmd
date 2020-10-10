@@ -167,7 +167,7 @@ weather_df %>%
   stat_summary(fun = "median") # default fun is mean
 ```
 
-Ridge plots -- the most polular plot of 2017
+Ridge plots -- the most popular plot of 2017
 
 ```{r}
 weather_df %>% 
@@ -175,5 +175,31 @@ weather_df %>%
   geom_density_ridges()
 ```
 
+
+
+## Save and Embed
+
+Let's save a scatterplot.
+
+```{r}
+weather_plot =
+  weather_df %>% 
+  ggplot(aes(x = tmin, y = tmax, color = name)) +
+  geom_point(alpha = .5)
+
+ggsave("./results/weather_plot.pdf", weather_plot, width = 8, height = 5)
+```
+
+What about embedding...
+
+```{r, fig.width=6, fig.height=3}
+weather_plot
+```
+
+Embed at different size.
+
+```{r, fig.width=12, fig.height=6}
+weather_plot
+```
 
 
